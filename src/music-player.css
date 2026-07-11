@@ -74,6 +74,17 @@ tp-yt-paper-item.ytmusic-guide-entry-renderer::before {
   max-width: calc(100% - var(--ytmusic-player-page-vertical-padding) * 2);
 }
 
+/* In fullscreen video the player bar stays permanently visible.
+ * Fade it out, and reveal it on hover (it overlays the bottom of the
+ * video, so moving the cursor to the bottom brings it back). */
+ytmusic-player-bar[player-fullscreened] {
+  opacity: 0 !important;
+  transition: opacity 0.25s ease !important;
+}
+ytmusic-player-bar[player-fullscreened]:hover {
+  opacity: 1 !important;
+}
+
 /* macos traffic lights fix */
 :where([data-os*='Macintosh']) ytmusic-app-layout#layout ytmusic-nav-bar {
   padding-top: var(--ytmusic-nav-bar-offset, 0);

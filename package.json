@@ -3,7 +3,7 @@
   "name": "mmusic",
   "desktopName": "com.mtube.mmusic",
   "productName": "MMusic",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "description": "MMusic Desktop App - including custom plugins",
   "main": "./dist/main/index.js",
   "type": "module",
