@@ -24,7 +24,7 @@ export type DownloaderPluginConfig = {
 };
 
 export const defaultConfig: DownloaderPluginConfig = {
-  enabled: false,
+  enabled: true,
   downloadFolder: undefined,
   downloadOnFinish: {
     enabled: false,
