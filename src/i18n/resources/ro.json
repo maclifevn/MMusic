@@ -1,0 +1,971 @@
+{
+  "common": {
+    "console": {
+      "plugins": {
+        "execute-failed": "Nu s-a reusit executarea plugin-ului {{pluginName}}::{{contextName}}",
+        "executed-at-ms": "Plugin-ul {{pluginName}}::{{contextName}} s-a executat in {{ms}} ms",
+        "initialize-failed": "Initializarea plugin-ului \"{{pluginName}}\" a esuat",
+        "load-all": "Se incarca toate plugin-urile",
+        "load-failed": "Esec la incarcarea plugin-ului \"{{pluginName}}\"",
+        "loaded": "Plugin-ul \"{{pluginName}}\" s-a incarcat",
+        "unload-failed": "Esec la oprirea plugin-ului \"{{pluginName}}\"",
+        "unloaded": "Plugin-ul \"{{pluginName}}\" s-a terminat"
+      }
+    }
+  },
+  "language": {
+    "code": "ro",
+    "local-name": "Română",
+    "name": "Romanian"
+  },
+  "main": {
+    "console": {
+      "did-finish-load": {
+        "dev-tools": "S-a terminat incarcarea. Panoul de developer e deschis"
+      },
+      "i18n": {
+        "loaded": "i18n incarcat"
+      },
+      "second-instance": {
+        "receive-command": "Comanda primita prin protocol: \"{{command}}\""
+      },
+      "theme": {
+        "css-file-not-found": "Fisierul CSS \"{{cssFile}}\" nu exista, se ignora"
+      },
+      "unresponsive": {
+        "details": "Eroare, procesul nu raspunde\n{{error}}"
+      },
+      "when-ready": {
+        "clearing-cache-after-20s": "Se sterge cache-ul aplicatiei"
+      },
+      "window": {
+        "tried-to-render-offscreen": "Fereastra a incercat sa fie randata in afara ecranului, marimeaFerestrei={{windowSize}}, marimeaEcranului={{displaySize}}, pozitia={{position}}"
+      }
+    },
+    "dialog": {
+      "hide-menu-enabled": {
+        "detail": "Meniul este ascuns, folositi tasta 'Alt' pentru a-l face sa apara (sau tasta 'Esc' daca folositi meniul din aplicatie)",
+        "message": "Ascunderea meniului este activata",
+        "title": "Ascunderea meniului activata"
+      },
+      "need-to-restart": {
+        "buttons": {
+          "later": "Mai tarziu",
+          "restart-now": "Reporneste acum"
+        },
+        "detail": "Plugin-ul \"{{pluginName}}\" necesita o repornire pentru a intra in efect",
+        "message": "Pugin-ul \"{{pluginName}}\" trebuie repornit",
+        "title": "Repornire necesara"
+      },
+      "unresponsive": {
+        "buttons": {
+          "quit": "Iesi",
+          "relaunch": "Reporneste",
+          "wait": "Asteapta"
+        },
+        "detail": "Ne cerem scuze pentru incovenient! va rugam alegeti ce doriti sa faceti:",
+        "message": "Applicatia nu raspunde",
+        "title": "Fereastra nu raspunde"
+      },
+      "update-available": {
+        "buttons": {
+          "disable": "Dezactiveaza actualizarile",
+          "download": "Descarca",
+          "ok": "OK"
+        },
+        "detail": "O noua versiune este disponibila si poate fi descarcata pe {{downloadLink}}",
+        "message": "O noua versiune este disponibila",
+        "title": "Actualizare disponibila"
+      }
+    },
+    "menu": {
+      "about": "Despre",
+      "navigation": {
+        "label": "Navigatie",
+        "submenu": {
+          "copy-current-url": "Copiaza URL-ul actual",
+          "go-back": "Mergi inapoi",
+          "go-forward": "Mergi inainte",
+          "quit": "Iesi",
+          "restart": "Reporneste aplicatia"
+        }
+      },
+      "options": {
+        "label": "Setari",
+        "submenu": {
+          "advanced-options": {
+            "label": "Setari avansate",
+            "submenu": {
+              "auto-reset-app-cache": "Reseteaza cache-ul aplicatiei la pornire",
+              "disable-hardware-acceleration": "Dezactiveaza acceleratia hardware",
+              "edit-config-json": "Editeaza config,json",
+              "override-user-agent": "Suprascrie User-Agent-ul",
+              "restart-on-config-changes": "Reporneste la modificarea configuratiei",
+              "set-proxy": {
+                "label": "Seteaza proxy",
+                "prompt": {
+                  "label": "Introduceti adresa proxy: (lasati liber pentru a dezactiva)",
+                  "placeholder": "Exemplu: SOCKS5://127.0.0.1:9999",
+                  "title": "Seteaza proxy"
+                }
+              },
+              "toggle-dev-tools": "Deschide uneltele de dezvoltator"
+            }
+          },
+          "always-on-top": "Mereu deasupra",
+          "auto-update": "Actualizare automata",
+          "hide-menu": {
+            "dialog": {
+              "message": "Meniul va fi ascuns la urmatoarea pornire, folositi [Alt] pentru a-l face sa apara (sau ghilimea intoarsa [`] daca folositi meniul applicatiei)",
+              "title": "Ascunderea meniului pornita"
+            },
+            "label": "Ascunde meniul"
+          },
+          "language": {
+            "dialog": {
+              "message": "Limba va fi schimbata dupa repornire",
+              "title": "Limba actualizata"
+            },
+            "label": "Limba",
+            "submenu": {
+              "to-help-translate": "Vrei să ajuți la traducere? Apasă aici"
+            }
+          },
+          "resume-on-start": "Continuă ultimul cântec ascultat când pornește aplicația",
+          "single-instance-lock": "Blocare cu o singură instanță",
+          "start-at-login": "Începe de la autentificare",
+          "starting-page": {
+            "label": "Pagina de pornire",
+            "unset": "Deselectat"
+          },
+          "tray": {
+            "label": "Tray",
+            "submenu": {
+              "disabled": "Dezactivat",
+              "enabled-and-hide-app": "Activează și ascunde fereastra aplicației",
+              "enabled-and-show-app": "Activează și arata fereastra aplicației",
+              "play-pause-on-click": "Start/Pauza la click"
+            }
+          },
+          "visual-tweaks": {
+            "label": "Modificări Vizuale",
+            "submenu": {
+              "custom-window-title": {
+                "label": "Titlul ferestrei personalizate",
+                "prompt": {
+                  "label": "Introduceți titlul ferestrei personalizate: (lăsați gol pentru a dezactiva)",
+                  "placeholder": "Exemplu: {{applicationName}}"
+                }
+              },
+              "like-buttons": {
+                "default": "Default",
+                "force-show": "Forțează randarea",
+                "hide": "Ascunde",
+                "label": "Butoane de like",
+                "swap": "Schimbă ordinea butoanelor like"
+              },
+              "remove-upgrade-button": "Elimina butonul de upgrade",
+              "theme": {
+                "dialog": {
+                  "button": {
+                    "cancel": "Anulează",
+                    "remove": "Elimină"
+                  },
+                  "remove-theme": "Ești sigur că vrei să elimini tema personalizata?",
+                  "remove-theme-message": "Acesta va elimina tema personalizata"
+                },
+                "label": "Tema",
+                "submenu": {
+                  "import-css-file": "Importa fisiere CSS proprii",
+                  "no-theme": "Fara tema"
+                }
+              }
+            }
+          }
+        }
+      },
+      "plugins": {
+        "enabled": "Activat",
+        "label": "Plugins",
+        "new": "NOU"
+      },
+      "view": {
+        "label": "Aspect",
+        "submenu": {
+          "force-reload": "Reimprospatare fortata",
+          "reload": "Reimprospateaza",
+          "reset-zoom": "Marimea actuala",
+          "toggle-fullscreen": "Porneste Full Screen",
+          "zoom-in": "Mareste",
+          "zoom-out": "Micsoreaza"
+        }
+      }
+    },
+    "tray": {
+      "next": "Urmatorul",
+      "play-pause": "Reda/Pauza",
+      "previous": "Anteriorul",
+      "quit": "Iesi",
+      "restart": "Reporneste aplicatia",
+      "show": "Arata fereastra",
+      "tooltip": {
+        "default": "{{applicationName}}",
+        "with-song-info": "{{applicationName}}: {{artist}} - {{title}}"
+      }
+    }
+  },
+  "plugins": {
+    "ad-speedup": {
+      "description": "Reclamele au sunetul dezactivat si viteza de redare este x16",
+      "name": "Accelerare reclame"
+    },
+    "album-actions": {
+      "description": "Adauga butoane pentru Undislike, Like si Unlike pentru toate piesele dintr-un playlist sau album",
+      "name": "Actiuni pentru album"
+    },
+    "album-color-theme": {
+      "description": "Aplica o tema dinamica si efecte vizuale bazate pe paleta de culori a albumului",
+      "menu": {
+        "color-mix-ratio": {
+          "label": "Raportul amestecului de culori",
+          "submenu": {
+            "percent": "{{ratio}}%"
+          }
+        }
+      },
+      "name": "Tema de culori a albumului"
+    },
+    "ambient-mode": {
+      "description": "Aplica un efect de iluminare, aplicand culori preluate din video pe fundalul ecranului",
+      "menu": {
+        "blur-amount": {
+          "label": "Cantitatea de blur",
+          "submenu": {
+            "pixels": "{{blurAmount}} pixeli"
+          }
+        },
+        "buffer": {
+          "label": "Buffer",
+          "submenu": {
+            "buffer": "{{buffer}}"
+          }
+        },
+        "opacity": {
+          "label": "Opacitate",
+          "submenu": {
+            "percent": "{{opacity}}%"
+          }
+        },
+        "quality": {
+          "label": "Calitate",
+          "submenu": {
+            "pixels": "{{quality}} pixeli"
+          }
+        },
+        "size": {
+          "label": "Marime",
+          "submenu": {
+            "percent": "{{size}}%"
+          }
+        },
+        "smoothness-transition": {
+          "label": "Fluiditatea tranzitiei",
+          "submenu": {
+            "during": "In timpul {{interpolationTime}} s"
+          }
+        },
+        "use-fullscreen": {
+          "label": "Ecran Plin în utilizare"
+        }
+      },
+      "name": "Mod ambiental"
+    },
+    "amuse": {
+      "description": "Adauga suport {{applicationName}} pentru Amuse se redă acum widget de 6K Labs",
+      "name": "Amuse",
+      "response": {
+        "query": "Server-ul API-ului Amuse rulează. GET /query pentru a obține informații despre melodie."
+      }
+    },
+    "api-server": {
+      "description": "Adaugă un server API pentru a controla player-ul",
+      "dialog": {
+        "request": {
+          "buttons": {
+            "allow": "Permite",
+            "deny": "Respinge"
+          },
+          "message": "Permite {{ID}} {{origin}} să acceseze API-ul?",
+          "title": "Cerere autorizare API"
+        }
+      },
+      "menu": {
+        "auth-strategy": {
+          "label": "Strategie de autorizare",
+          "submenu": {
+            "auth-at-first": {
+              "label": "Autorizare la prima cerere"
+            },
+            "none": {
+              "label": "Fără autorizare"
+            }
+          }
+        },
+        "hostname": {
+          "label": "Nume host"
+        },
+        "https": {
+          "label": "HTTPS și Certificate",
+          "submenu": {
+            "cert": {
+              "dialogTitle": "Selectează fișierul de certificare HTTPS",
+              "label": "Fișier de certificare (.crt/.pem)"
+            },
+            "enable-https": {
+              "label": "Activează HTTPS"
+            }
+          }
+        },
+        "port": {
+          "label": "Port"
+        }
+      },
+      "name": "Server API [Beta]",
+      "prompt": {
+        "hostname": {
+          "label": "Introduceți nume host (0.0.0.0 de ex.) pentru server-ul API:",
+          "title": "Nume host"
+        },
+        "port": {
+          "label": "Introduceți port-ul pentru server-ul API:",
+          "title": "Port"
+        }
+      }
+    },
+    "audio-compressor": {
+      "description": "Aplică compresie pe audio (scade volumul părților cele mai zgomotoase și crește volumul părților mai puțin zgomotoase)",
+      "name": "Compresor audio"
+    },
+    "auth-proxy-adapter": {
+      "description": "Suport pentru utilizarea serviciilor proxy de autentificare",
+      "menu": {
+        "disable": "Dezactivează Adaptorul Proxy",
+        "enable": "Activează Adaptorul Proxy",
+        "hostname": {
+          "label": "Nume host"
+        },
+        "port": {
+          "label": "Port"
+        }
+      },
+      "name": "Adaptor Proxy de Autentificare",
+      "prompt": {
+        "hostname": {
+          "label": "Introduceți numele de gazdă pentru serverul proxy local (necesită repornire):",
+          "title": "Nume host proxy"
+        },
+        "port": {
+          "label": "Introduceți portul pentru serverul proxy local (necesită repornire):",
+          "title": "Port Proxy"
+        }
+      }
+    },
+    "blur-nav-bar": {
+      "description": "Face bara de navigare semi-transparentă și difuză",
+      "name": "Estompează Bara de Navigație"
+    },
+    "bypass-age-restrictions": {
+      "description": "Treci peste verificarea de vârstă a Music Player",
+      "name": "Ignoră restricțiile de vârstă"
+    },
+    "captions-selector": {
+      "description": "Selector de subtitrări pentru piesele audio de pe {{applicationName}}",
+      "menu": {
+        "autoload": "Selectează automat ultima subtitrare folosită",
+        "disable-captions": "Fără subtitrări în mod implicit"
+      },
+      "name": "Selector de subtitrări",
+      "prompt": {
+        "selector": {
+          "label": "Limba curentă a subtitrărilor: {{language}}",
+          "none": "Niciuna",
+          "title": "Alege limba subtitrărilor"
+        }
+      },
+      "templates": {
+        "title": "Deschide selectorul de subtitrări"
+      },
+      "toast": {
+        "caption-changed": "Subtitrare schimbata in {{language}}",
+        "caption-disabled": "Subtitrari dezactivate",
+        "no-captions": "Nu exista subtitrari disponibile pentru aceasta piesa"
+      }
+    },
+    "clock": {
+      "menu": {
+        "format": {
+          "label": "Format"
+        }
+      },
+      "name": "Ceas"
+    },
+    "compact-sidebar": {
+      "description": "Păstrează bara laterală mereu în modul compact",
+      "name": "Bara Laterală Compactă"
+    },
+    "crossfade": {
+      "description": "Tranziționează între melodii",
+      "menu": {
+        "advanced": "Avansat"
+      },
+      "name": "Tranziție [Beta]",
+      "prompt": {
+        "options": {
+          "multi-input": {
+            "fade-in-duration": "Durată tranziție de început (ms)",
+            "fade-out-duration": "Durată tranziției de sfârșit (ms)",
+            "fade-scaling": {
+              "label": "Scalare de estompare",
+              "linear": "Liniar",
+              "logarithmic": "Logaritmic"
+            },
+            "seconds-before-end": "Tranziție N secunde înainte de final"
+          },
+          "title": "Opțiuni de tranziție"
+        }
+      }
+    },
+    "custom-output-device": {
+      "description": "Configurați un dispozitiv de ieșire personalizat pentru melodii",
+      "menu": {
+        "device-selector": "Selectați dispozitivul"
+      },
+      "name": "Dispozitiv de ieșire personalizat",
+      "prompt": {
+        "device-selector": {
+          "label": "Alegeți dispozitivul media de ieșire care va fi utilizat",
+          "title": "Selectați dispozitivul de ieșire"
+        }
+      }
+    },
+    "disable-autoplay": {
+      "description": "Face cântecul să înceapă în modul \"pauză\"",
+      "menu": {
+        "apply-once": "Se aplică doar la pornirea aplicației"
+      },
+      "name": "Dezactivează redarea automată"
+    },
+    "discord": {
+      "backend": {
+        "already-connected": "S-a încercat conectarea cu o conexiune activă",
+        "connected": "Conectat la Discord",
+        "disconnected": "Deconectat de la Discord"
+      },
+      "description": "Arată-le prietenilor ce asculți cu Rich Presence",
+      "menu": {
+        "auto-reconnect": "Reconectare automată",
+        "clear-activity": "Șterge activitatea",
+        "clear-activity-after-timeout": "Șterge activitatea după timeout",
+        "connected": "Conectat",
+        "disconnected": "Deconectat",
+        "hide-duration-left": "Ascunde timpul rămas",
+        "hide-github-button": "Ascunde butonul cu link-ul GitHub",
+        "play-on-application": "Redă pe {{applicationName}}",
+        "set-inactivity-timeout": "Setează intervalul de inactivitate",
+        "set-status-display-type": {
+          "label": "Text stare",
+          "submenu": {
+            "application": "Ascultând {{applicationName}}",
+            "artist": "Ascultând {artist}",
+            "title": "Ascultând {song title}"
+          }
+        }
+      },
+      "name": "Discord Rich Presence",
+      "prompt": {
+        "set-inactivity-timeout": {
+          "label": "Introduceți perioada de inactivitate dorită în secunde:",
+          "title": "Setează timpul de inactivitate"
+        }
+      }
+    },
+    "downloader": {
+      "backend": {
+        "dialog": {
+          "error": {
+            "buttons": {
+              "ok": "OK"
+            },
+            "message": "Ah! Scuze, descărcarea a eșuat…",
+            "title": "Eroare la descărcare!"
+          },
+          "start-download-playlist": {
+            "buttons": {
+              "ok": "OK"
+            },
+            "detail": "({{playlistSize}} melodii)",
+            "message": "Se descarca Playlist-ul {{playlistTitle}}",
+            "title": "Descărcarea a început"
+          }
+        },
+        "feedback": {
+          "conversion-progress": "Conversie: {{percent}}%",
+          "converting": "Se convertește…",
+          "done": "Descărcat: {{filePath}}",
+          "download-info": "Se descarcă {{artist}} -{{title}} [{{videoId}}",
+          "download-progress": "Se descarcă: {{percent}}%",
+          "downloading": "Se descarcă…",
+          "downloading-counter": "Se descarcă {{current}}/{{total}}…",
+          "downloading-playlist": "Se descarcă lista de redare \"{{playlistTitle}}\" - {{playlistSize}} piese ({{playlistId}})",
+          "error-while-downloading": "Eroare la descarcareă piesei \"{{author}} - {{title}}\":{{error}}",
+          "folder-already-exists": "Dosarul {{playlistFolder}} există deja",
+          "getting-playlist-info": "Se adună informațiile despre lista de redare…",
+          "loading": "Se incarcă…",
+          "playlist-has-only-one-song": "Lista de redare are doar un element, acesta va fi descărcat direct",
+          "playlist-id-not-found": "Niciun ID al listei de redare nu a fost gasit",
+          "playlist-is-empty": "Lista de redare este goală",
+          "playlist-is-mix-or-private": "Eroare la colectarea informațiilor despre lista de redare: asigurați-vă că nu este privat sau o listă de redare \"Mixed for you\"\n\n{{error}}",
+          "preparing-file": "Se pregătește fișierul…",
+          "saving": "Se salvează…",
+          "trying-to-get-playlist-id": "Se încearcă obținerea ID-ului listei de redare: {{playlistId}}",
+          "video-id-not-found": "Videoclipul nu a fost găsit",
+          "writing-id3": "Se scriu tag-urile ID3…"
+        }
+      },
+      "description": "Descarcă MP3 / sursa audio direct din interfață",
+      "menu": {
+        "choose-download-folder": "Alege folderul de descărcări",
+        "download-finish-settings": {
+          "label": "Descărcare la finalizare",
+          "prompt": {
+            "last-percent": "După x la sută",
+            "last-seconds": "Ultimele x secunde",
+            "title": "Configurează când să se descarce"
+          },
+          "submenu": {
+            "advanced": "Avansat",
+            "enabled": "Activat",
+            "mode": "Mod timp",
+            "percent": "Procentaj",
+            "seconds": "Secunde"
+          }
+        },
+        "download-playlist": "Descarcă lista de redare",
+        "presets": "Setări implicite",
+        "skip-existing": "Treci peste fișierele existente"
+      },
+      "name": "Descărcător",
+      "renderer": {
+        "can-not-update-progress": "Nu se poate actualiza progresul"
+      },
+      "templates": {
+        "button": "Descarcă"
+      }
+    },
+    "equalizer": {
+      "description": "Adauă un egalizator la player",
+      "menu": {
+        "presets": {
+          "label": "Setări implicite",
+          "list": {
+            "bass-booster": "Amplificator de bas"
+          }
+        }
+      },
+      "name": "Egalizator"
+    },
+    "exponential-volume": {
+      "description": "Face glisorul de volum exponențial pentru a fi mai ușor de selectat volume reduse.",
+      "name": "Volum exponențial"
+    },
+    "in-app-menu": {
+      "description": "Oferă barelor de meniu un aspect extravagant, întunecat sau de culoarea albumului",
+      "menu": {
+        "hide-dom-window-controls": "Ascunde controalele ferestrei DOM"
+      },
+      "name": "Meniul aplicației"
+    },
+    "lumiastream": {
+      "description": "Adaugă asistenta pentru Lumia Stream",
+      "name": "Lumia Stream [Beta]"
+    },
+    "lyrics-genius": {
+      "description": "Adaugă versuri pentru majoritatea cântecelor",
+      "menu": {
+        "romanized-lyrics": "Versuri romantizate"
+      },
+      "name": "Lyrics Genius",
+      "renderer": {
+        "fetched-lyrics": "Versuri preluate de pe Genius"
+      }
+    },
+    "music-together": {
+      "description": "Împărtășește lista de redare cu alții. Când gazda va pune o piesă, toți ceilalți vor auzi aceeași melodie",
+      "dialog": {
+        "enter-host": "Introdu ID-ul host-ului"
+      },
+      "internal": {
+        "save": "Salvează",
+        "track-source": "Sursa piesei",
+        "unknown-user": "Utilizator necunoscut"
+      },
+      "menu": {
+        "click-to-copy-id": "Copiază ID-ul host-ului",
+        "close": "Închide Music Together",
+        "connected-users": "Utilizatori conecțati",
+        "disconnect": "Deconectează Music Together",
+        "empty-user": "Niciun utilizator conectat",
+        "host": "Gazda Music Together",
+        "join": "Alătura-te Music Together",
+        "permission": {
+          "all": "Permite invitaților să controleze lista de redare si player-ul",
+          "host-only": "Doar gazda poate controla lista de redare și player-ul",
+          "playlist": "Permite invitaților controlul asupra listei de redare"
+        },
+        "set-permission": "Schimbă controlul permisiunilor",
+        "status": {
+          "disconnected": "Deconectat",
+          "guest": "Conectat ca invitat",
+          "host": "Conectat ca gazda"
+        }
+      },
+      "name": "Music Together [Beta]",
+      "toast": {
+        "add-song-failed": "Adăugarea piesei a eșuat",
+        "closed": "Music Together închis",
+        "disconnected": "Music Together deconectat",
+        "host-failed": "Nu s-a reușit găzduirea Music Together",
+        "id-copied": "ID-ul host-ului a fost copiat în clipboard",
+        "id-copy-failed": "Eroare la copierea ID-ului host-ului în clipboard",
+        "join-failed": "Nu s-a reușit alăturarea la Music Together",
+        "joined": "V-ați alăturat Music Together",
+        "permission-changed": "Permisiunile Music Together s-au schimbat la \"{{permission}}\"",
+        "remove-song-failed": "Eroare la îndepărtarea melodiei",
+        "user-connected": "{{name}} s-a alăturat la Music Together",
+        "user-disconnected": "{{name}} a părăsit Music Together"
+      }
+    },
+    "navigation": {
+      "description": "Săgețile pentru Următorul/Anteriorul integrate direct în interfață, ca în browser-ul tău preferat",
+      "name": "Navigație",
+      "templates": {
+        "back": {
+          "title": "Inapoi la pagina anterioara"
+        },
+        "forward": {
+          "title": "Urmatoarea pagina"
+        }
+      }
+    },
+    "no-google-login": {
+      "description": "Elimină butonul de autentificare Google și link-urile din interfață",
+      "name": "Nicio autentificare Google"
+    },
+    "notifications": {
+      "description": "Afișează o notificare când începe să cânte o piesă (notificările interactive sunt disponibile pe Windows)",
+      "menu": {
+        "interactive": "Notificări interactive",
+        "interactive-settings": {
+          "label": "Setări interactive",
+          "submenu": {
+            "hide-button-text": "Ascunde textul butoanelor",
+            "refresh-on-play-pause": "Reîmprospătează la Redă/Pauză",
+            "tray-controls": "Deschide/Închide la apăsarea iconiței pentru meniul Tray"
+          }
+        },
+        "priority": "Prioritatea notificărilor",
+        "toast-style": "Stilul notificărilor",
+        "unpause-notification": "Arată notificările la pauză"
+      },
+      "name": "Notificări"
+    },
+    "performance-improvement": {
+      "description": "Îmbunătățește performanța activând scripturile experimentale",
+      "name": "Îmbunătățirea performanței [Beta]"
+    },
+    "picture-in-picture": {
+      "description": "Permite să schimbi aplicația la modul picture-in-picture",
+      "menu": {
+        "always-on-top": "Mereu deasupra",
+        "hotkey": {
+          "label": "Scurtături pe tastatură",
+          "prompt": {
+            "keybind-options": {
+              "hotkey": "Scurtături din taste"
+            },
+            "label": "Alege tasta pentru picture-in-picture",
+            "title": "Scurtătura Picture-in-picture"
+          }
+        },
+        "save-window-position": "Salvează poziția ferestrei",
+        "save-window-size": "Salvează mărimea ferestrei",
+        "use-native-pip": "Folosește PiP-ul nativ pentru broswer"
+      },
+      "name": "Picture-in-picture",
+      "templates": {
+        "button": "Picture-in-picture"
+      }
+    },
+    "playback-speed": {
+      "description": "Ascultă rapid, ascultă lent! Adaugă un slider pentru viteza de redare a melodiei",
+      "name": "Viteza de redare",
+      "templates": {
+        "button": "Viteză"
+      }
+    },
+    "precise-volume": {
+      "description": "Controlează volumul precis folosind rotița mouse-ului/scurtăturii din tastatură, cu un HUD personalizat și incremente de volum personalizate",
+      "menu": {
+        "arrows-shortcuts": "Control cu tastele-săgeți locale",
+        "custom-volume-steps": "Setează incrementele de volum",
+        "global-shortcuts": "Scurtături de tastatură globale"
+      },
+      "name": "Volum precis",
+      "prompt": {
+        "global-shortcuts": {
+          "keybind-options": {
+            "decrease": "Redu volumul audio",
+            "increase": "Crește volumul audio"
+          },
+          "label": "Alege combinațiile de taste globale pentru volumul audio:",
+          "title": "Combinații globale de taste pentru volum"
+        },
+        "volume-steps": {
+          "label": "Alege pașii de increment pentru volum audio",
+          "title": "Incremente de volum"
+        }
+      }
+    },
+    "quality-changer": {
+      "backend": {
+        "dialog": {
+          "quality-changer": {
+            "detail": "Calitate actuală: {{quality}}",
+            "message": "Alegeți calitatea video:",
+            "title": "Alegeți calitatea video"
+          }
+        }
+      },
+      "description": "Permite schimbarea calității video cu un buton prezent peste video",
+      "name": "Schimbător de calitate video",
+      "renderer": {
+        "quality-settings-button": {
+          "label": "Deschide setările de calitate"
+        }
+      }
+    },
+    "scrobbler": {
+      "description": "Adaugă asistenta pentru scrobbling (etc. last.fm, Listenbrainz)",
+      "dialog": {
+        "lastfm": {
+          "auth-failed": {
+            "message": "Autentificarea cu Last.fm a eșuat\nAscunde acest pop-up până la următoarea repornire.",
+            "title": "Autentificare Eșuată"
+          }
+        }
+      },
+      "menu": {
+        "lastfm": {
+          "api-settings": "Setări pentru API-ul Last.fm"
+        },
+        "listenbrainz": {
+          "token": "Introdu token-ul de utilizator ListenBrainz"
+        },
+        "scrobble-alternative-artist": "Utilizați artiști alternativi",
+        "scrobble-alternative-title": "Folosește titluri alternative",
+        "scrobble-other-media": "Scrobble alte surse media"
+      },
+      "name": "Scrobbler",
+      "prompt": {
+        "lastfm": {
+          "api-key": "Cheia API Last.fm",
+          "api-secret": "Secret API Last.fm"
+        },
+        "listenbrainz": {
+          "token": {
+            "label": "Introdu token-ul tău de utilizator ListenBrainz:",
+            "title": "Token-ul ListenBrainz"
+          }
+        }
+      }
+    },
+    "shortcuts": {
+      "description": "Permite setari globale pentru scurtături pe tastatură pentru redare (redă/pauză/următorul/anteriorul) și pentru oprirea media OSD prin suprascriera tastelor media, pentru folosirea combinației Ctrl/CMD + F pentru a căuta, pentru pornirea asistenței Linux MPRIS pentru taste media și pentru scurtături personalizate pentru utilizatori avansați",
+      "menu": {
+        "override-media-keys": "Suprascrie tastele media",
+        "set-keybinds": "Setează scurtăturile globale pentru melodii"
+      },
+      "name": "Scurtături (& MPRIS)",
+      "prompt": {
+        "keybind": {
+          "keybind-options": {
+            "next": "Următorul",
+            "play-pause": "Redă / Pauză",
+            "previous": "Anteriorul"
+          },
+          "label": "Alege combinația de taste globală pentru controlul melodiilor:",
+          "title": "Scurtături pe tastatură globale"
+        }
+      }
+    },
+    "skip-disliked-songs": {
+      "description": "Sari peste melodiile neplăcute",
+      "name": "Treci peste melodiile neplăcute"
+    },
+    "skip-silences": {
+      "description": "Treci automat peste secțiunile de liniște din melodii",
+      "name": "Treci peste liniște"
+    },
+    "sponsorblock": {
+      "description": "Treci automat peste părțile non-muzicale precum intro/outro sau părți din video-ul melodiei, când nu se aude melodia",
+      "name": "SponsorBlock"
+    },
+    "synced-lyrics": {
+      "description": "Furnizează versuri sincronizate melodiilor, folosind furnizori precum LRClib.",
+      "errors": {
+        "fetch": "⚠️ - A apărut o eroare în timpul încărcării versurilor. \nTe rog încearcă din nou mai târziu.",
+        "not-found": "⚠️ Nu au fost găsite versuri pentru această melodie."
+      },
+      "menu": {
+        "convert-chinese-character": {
+          "submenu": {
+            "disabled": {
+              "label": "Dezactivat"
+            }
+          }
+        },
+        "default-text-string": {
+          "label": "Caracter implicit între versuri",
+          "tooltip": "Alege caracterul implicit folosit pentru spațiul dintre versuri"
+        },
+        "line-effect": {
+          "label": "Efect de linie",
+          "submenu": {
+            "fancy": {
+              "label": "Elegant",
+              "tooltip": "Folosește efecte largi pe linia curentă"
+            },
+            "focus": {
+              "label": "Focalizare",
+              "tooltip": "Doar linia curentă este albă"
+            },
+            "offset": {
+              "label": "Deplasare",
+              "tooltip": "Deplasare la dreapta pentru linia curentă"
+            },
+            "scale": {
+              "label": "Mărime",
+              "tooltip": "Schimbă dimensiunea liniei curente"
+            }
+          },
+          "tooltip": "Alege efectul aplicat liniei curente"
+        },
+        "precise-timing": {
+          "label": "Sincronizează versurile perfect",
+          "tooltip": "Calculează afisarea următoarei linii până la milisecundă (poate afecta performanța)"
+        },
+        "preferred-provider": {
+          "label": "Furnizor preferat",
+          "none": {
+            "label": "Niciunul",
+            "tooltip": "Niciun furnizor preferat"
+          },
+          "tooltip": "Alegeți furnizorul preferat"
+        },
+        "romanization": {
+          "label": "Transcrie versurile în alfabet latin",
+          "tooltip": "Dacă versurile sunt într-o altă limbă, încearcă să afișezi o versiune în alfabet latin."
+        },
+        "show-lyrics-even-if-inexact": {
+          "label": "Afișează versurile chiar dacă sunt inexacte",
+          "tooltip": "Dacă melodia nu este găsită, plugin-ul încearcă din nou cu o căutare diferită.\nRezultatul acestei încercări poate să nu fie exact."
+        },
+        "show-time-codes": {
+          "label": "Afișează codurile de timp",
+          "tooltip": "Afișează codurile de timp lângă versuri"
+        }
+      },
+      "name": "Versuri Sincronizate",
+      "refetch-btn": {
+        "fetching": "Încărcare...",
+        "normal": "Reîncărcare versuri"
+      },
+      "warnings": {
+        "duration-mismatch": "⚠️ - Versurile pot fi desincronizate din cauza unei nepotriviri de durație.",
+        "inexact": "⚠️ - Versurile pentru această melodie pot fi inexacte",
+        "instrumental": "⚠️ - Această melodie este instrumentală"
+      }
+    },
+    "taskbar-mediacontrol": {
+      "description": "Controlează redarea din Bara de Activități Windows",
+      "name": "Control media in Bara de Activitate"
+    },
+    "touchbar": {
+      "description": "Adaugă un widget TouchBar pentru utilizatorii macOS",
+      "name": "TouchBar"
+    },
+    "transparent-player": {
+      "description": "Face fereastra aplicației transparentă",
+      "menu": {
+        "opacity": {
+          "label": "Opacitate",
+          "submenu": {
+            "percent": "{{opacity}}%"
+          }
+        },
+        "type": {
+          "label": "Tip",
+          "submenu": {
+            "acrylic": "Acrilic",
+            "mica": "Efect mica",
+            "none": "Niciunul",
+            "tabbed": "Cu file"
+          }
+        }
+      },
+      "name": "Player transparent"
+    },
+    "tuna-obs": {
+      "description": "Integrare cu plugin-ul OBS Tuna",
+      "name": "Tuna OBS"
+    },
+    "unobtrusive-player": {
+      "description": "Împiedică playerul să apară atunci când redați o melodie",
+      "name": "Player discret"
+    },
+    "video-toggle": {
+      "description": "Adaugă un buton ce schimbă între modurile Video/Melodie. De asemenea se poate elimina opțional toată fila video",
+      "menu": {
+        "align": {
+          "label": "Aliniere",
+          "submenu": {
+            "left": "Stânga",
+            "middle": "Mijloc",
+            "right": "Dreapta"
+          }
+        },
+        "force-hide": "Forțează eliminarea filei video",
+        "mode": {
+          "label": "Mod",
+          "submenu": {
+            "custom": "Comutatoare personalizate",
+            "disabled": "Dezactivat",
+            "native": "Comutatoare native"
+          }
+        }
+      },
+      "name": "Comutator video",
+      "templates": {
+        "button-song": "Melodie",
+        "button-video": "Video"
+      }
+    },
+    "visualizer": {
+      "description": "Adaugă un vizualizator la player",
+      "menu": {
+        "visualizer-type": "Tip de vizualizator"
+      },
+      "name": "Vizualizator"
+    }
+  }
+}

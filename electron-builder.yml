@@ -1,0 +1,124 @@
+appId: "com.mtube.mmusic"
+productName: "MMusic"
+files:
+  - '!*'
+  - dist
+  - assets
+  - license
+  - '!node_modules'
+  - 'node_modules/custom-electron-prompt/**'
+  - 'node_modules/@ghostery/adblocker-electron-preload/**'
+  - 'node_modules/@ffmpeg.wasm/core-mt/**'
+  - '!node_modules/**/*.map'
+  - '!node_modules/**/*.ts'
+asarUnpack:
+  - assets
+mac:
+  hardenedRuntime: true
+  gatekeeperAssess: false
+  notarize: true
+  target:
+    - target: dmg
+      arch:
+        - x64
+        - arm64
+  icon: assets/generated/icons/mac/icon.icns
+  compression: maximum
+win:
+  icon: assets/generated/icons/win/icon.ico
+  target:
+    - target: nsis-web
+      arch:
+        - x64
+        - ia32
+        - arm64
+    - target: portable
+      arch:
+        - x64
+        - ia32
+        - arm64
+  compression: maximum
+nsisWeb:
+  runAfterFinish: false
+linux:
+  icon: assets/generated/icons/png
+  category: AudioVideo
+  syncDesktopName: true
+  desktop:
+    entry:
+      StartupWMClass: "com.mtube.mmusic"
+  target:
+    - target: AppImage
+      arch:
+        - x64
+        - arm64
+        - armv7l
+    - target: flatpak
+      arch:
+        - x64
+    - target: deb
+      arch:
+        - x64
+        - arm64
+        - armv7l
+    - target: rpm
+      arch:
+        - x64
+        - arm64
+    - target: snap
+      arch:
+        - x64
+    - target: freebsd
+      arch:
+        - x64
+        - arm64
+        - armv7l
+    - target: tar.gz
+      arch:
+        - x64
+        - arm64
+        - armv7l
+appImage:
+  description: "MMusic Desktop App bundled with custom plugins"
+  category: AudioVideo
+flatpak:
+  description: "MMusic Desktop App bundled with custom plugins"
+  category: AudioVideo
+  runtimeVersion: '24.08'
+  baseVersion: '24.08'
+  finishArgs:
+    - '--socket=wayland'
+    - '--socket=x11'
+    - '--share=ipc'
+    - '--device=dri'
+    - '--socket=pulseaudio'
+    - '--share=network'
+    - '--filesystem=xdg-music:rw'
+    - '--talk-name=org.freedesktop.Notifications'
+    - '--talk-name=org.gnome.SessionManager'
+    - '--talk-name=org.kde.StatusNotifierWatcher'
+    - "--own-name=org.mpris.MediaPlayer2.MMusic.*"
+deb:
+  depends:
+    - libgtk-3-0
+    - libnotify4
+    - libnss3
+    - libxss1
+    - libxtst6
+    - xdg-utils
+    - libatspi2.0-0
+    - libuuid1
+    - libasound2
+    - libgbm1
+rpm:
+  depends:
+    - libuuid
+  fpm:
+    - '--rpm-rpmbuild-define'
+    - _build_id_links none
+snap:
+  slots:
+    - mpris:
+        interface: mpris
+directories:
+  output: ./pack/
