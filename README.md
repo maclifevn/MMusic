@@ -56,7 +56,7 @@ Create a folder in `src/plugins/YOUR-PLUGIN-NAME` with an `index.ts`:
 import { createPlugin } from '@/utils';
 
 export default createPlugin({
-  name: 'My Plugin',
+  name: () => 'My Plugin',
   restartNeeded: true,
   config: { enabled: false },
   renderer() {
