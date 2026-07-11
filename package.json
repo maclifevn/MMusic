@@ -10,9 +10,9 @@
   "license": "MIT",
   "repository": "maclifevn/MMusic",
   "author": {
-    "name": "th-ch",
-    "email": "th-ch@users.noreply.github.com",
-    "url": "https://github.com/pear-devs/pear-desktop"
+    "name": "maclifevn",
+    "email": "phongmarketingtanhung@gmail.com",
+    "url": "https://github.com/maclifevn/MMusic"
   },
   "scripts": {
     "postinstall": "pnpm install-electron",
