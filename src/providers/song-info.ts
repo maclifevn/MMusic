@@ -52,7 +52,7 @@ export const getImage = async (src: string): Promise<Electron.NativeImage> => {
     Buffer.from(await result.arrayBuffer()),
   );
   if (output.isEmpty() && !src.endsWith('.jpg') && src.includes('.jpg')) {
-    // Fix hidden webp files (https://github.com/pear-devs/pear-desktop/issues/315)
+    // Fix hidden webp files
     return getImage(src.slice(0, src.lastIndexOf('.jpg') + 4));
   }
 

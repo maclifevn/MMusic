@@ -81,7 +81,7 @@ ytmusic-app-layout
   );
 }
 
-/* ytm-bugs: see https://github.com/pear-devs/pear-desktop/issues/1737 */
+/* ytm-bugs: see https://github.com/maclifevn/MMusic/issues/1737 */
 html {
   scrollbar-color: unset;
 }

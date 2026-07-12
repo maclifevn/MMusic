@@ -1,5 +1,5 @@
 /**
- * Application ID registered by @th-ch/pear-desktop dev team
+ * Application ID registered by MMusic
  */
 export const clientId = '1177081335727267940';
 /**

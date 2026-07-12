@@ -6,7 +6,7 @@
     "configurations": [
         {
             "type": "node-terminal",
-            "name": "Run Script: dev (pear-desktop)",
+            "name": "Run Script: dev (mmusic)",
             "request": "launch",
             "command": "pnpm run dev",
             "cwd": "${workspaceFolder}"

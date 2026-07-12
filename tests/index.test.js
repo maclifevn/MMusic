@@ -7,7 +7,7 @@ process.env.NODE_ENV = 'test';
 
 const appPath = path.resolve(import.meta.dirname, '..');
 
-test('Pear Desktop App - With default settings, app is launched and visible', async () => {
+test('MMusic App - With default settings, app is launched and visible', async () => {
   const app = await electron.launch({
     cwd: appPath,
     args: [
@@ -29,7 +29,7 @@ test('Pear Desktop App - With default settings, app is launched and visible', as
   }
 
   // const title = await window.title();
-  // expect(title.replaceAll(/\s/g, ' ')).toEqual('Pear Desktop');
+  // expect(title.replaceAll(/\s/g, ' ')).toEqual('MMusic');
 
   const url = window.url();
   expect(

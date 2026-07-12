@@ -68,7 +68,7 @@ export const buildDiscordButtons = (
   if (!config.hideGitHubButton) {
     buttons.push({
       label: 'View App On GitHub',
-      url: 'https://github.com/pear-devs/pear-desktop',
+      url: 'https://github.com/maclifevn/MMusic',
     });
   }
   return buttons.length ? buttons : undefined;

@@ -603,6 +603,9 @@ app.once('browser-window-created', (_event, win) => {
       }
 
       if (
+        // Only the main document failing should replace the app with the
+        // error page; a failed subframe/subresource must not wipe the page.
+        isMainFrame &&
         errorCode !== -3 &&
         // Workaround for #2435
         !URL.parse(validatedURL)?.hostname?.includes('doubleclick.net')
@@ -824,7 +827,7 @@ app.whenReady().then(async () => {
     }, 2000);
     electronUpdater.autoUpdater.on('update-available', () => {
       const downloadLink =
-        'https://github.com/pear-devs/pear-desktop/releases/latest';
+        'https://github.com/maclifevn/MMusic/releases/latest';
       const dialogOptions: Electron.MessageBoxOptions = {
         type: 'info',
         buttons: [

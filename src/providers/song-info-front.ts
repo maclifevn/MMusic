@@ -23,7 +23,7 @@ window.ipcRenderer.on(
   },
 );
 
-// Used because 'loadeddata' or 'loadedmetadata' weren't firing on song start for some users (https://github.com/pear-devs/pear-desktop/issues/473)
+// Used because 'loadeddata' or 'loadedmetadata' weren't firing on song start for some users
 const srcChangedEvent = new CustomEvent('peard:src-changed');
 
 export const setupSeekedListener = singleton(() => {
