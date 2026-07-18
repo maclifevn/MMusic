@@ -165,7 +165,7 @@
     ],
     "@stylistic/comma-dangle": ["error", "always-multiline"],
     "@stylistic/max-len": "off",
-    "@stylistic/no-mixed-operators": "error",
+    "@stylistic/no-mixed-operators": "off",
     "@stylistic/no-multi-spaces": [
       "error",
       {

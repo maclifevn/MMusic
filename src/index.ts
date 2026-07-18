@@ -62,8 +62,13 @@ unhandled({
 });
 
 // Prevent window being garbage collected
-let mainWindow: Electron.BrowserWindow | null;
+let mainWindow: Electron.BrowserWindow | null = null;
+let isQuitting = false;
 electronUpdater.autoUpdater.autoDownload = false;
+
+app.on('before-quit', () => {
+  isQuitting = true;
+});
 
 const gotTheLock = app.requestSingleInstanceLock();
 if (!gotTheLock) {
@@ -187,26 +192,23 @@ ipcMain.handle('peard:get-main-plugin-names', async () =>
   Object.keys(await mainPlugins()),
 );
 
-const initHook = (win: BrowserWindow) => {
-  // Plugin stubs are resolved lazily (allPlugins is memoized) so that no
-  // plugin module needs to be imported before the page starts loading.
-  ipcMain.handle(
-    'peard:get-config',
-    async (_, id: string) =>
-      deepmerge(
-        (await allPlugins())[id].config ?? { enabled: false },
-        config.get(`plugins.${id}`) ?? {},
-      ) as PluginConfig,
-  );
-  ipcMain.handle('peard:set-config', async (_, name: string, obj: object) =>
-    config.setPartial(
-      `plugins.${name}`,
-      obj,
-      (await allPlugins())[name].config,
-    ),
-  );
+// These handlers belong to the application, not an individual window. Keeping
+// them outside createMainWindow allows macOS to recreate a window after the
+// previous one has been closed without registering the same channels twice.
+ipcMain.handle(
+  'peard:get-config',
+  async (_, id: string) =>
+    deepmerge(
+      (await allPlugins())[id].config ?? { enabled: false },
+      config.get(`plugins.${id}`) ?? {},
+    ) as PluginConfig,
+);
+ipcMain.handle('peard:set-config', async (_, name: string, obj: object) =>
+  config.setPartial(`plugins.${name}`, obj, (await allPlugins())[name].config),
+);
 
-  config.watch(async (newValue, oldValue) => {
+const watchConfig = (win: BrowserWindow) => {
+  const unwatch = config.watch(async (newValue, oldValue) => {
     const newPluginConfigList = (newValue?.plugins ?? {}) as Record<
       string,
       unknown
@@ -229,11 +231,15 @@ const initHook = (win: BrowserWindow) => {
 
         if (config.enabled !== oldConfig?.enabled) {
           if (config.enabled) {
-            win.webContents.send('plugin:enable', id);
+            if (!win.isDestroyed()) {
+              win.webContents.send('plugin:enable', id);
+            }
             ipcMain.emit('plugin:enable', id);
             forceLoadMainPlugin(id, win);
           } else {
-            win.webContents.send('plugin:unload', id);
+            if (!win.isDestroyed()) {
+              win.webContents.send('plugin:unload', id);
+            }
             ipcMain.emit('plugin:unload', id);
             forceUnloadMainPlugin(id, win);
           }
@@ -253,10 +259,14 @@ const initHook = (win: BrowserWindow) => {
           }
         }
 
-        win.webContents.send('config-changed', id, config);
+        if (!win.isDestroyed()) {
+          win.webContents.send('config-changed', id, config);
+        }
       }
     });
   });
+
+  win.once('closed', unwatch);
 };
 
 const showNeedToRestartDialog = async (id: string) => {
@@ -386,8 +396,11 @@ async function createMainWindow() {
   };
 
   const win = new BrowserWindow(electronWindowSettings);
+  // Publish the window before asynchronous plugin initialization finishes so
+  // early activate/close events cannot observe a missing main window.
+  mainWindow = win;
 
-  initHook(win);
+  watchConfig(win);
   initTheme(win);
 
   if (windowPosition) {
@@ -406,10 +419,10 @@ async function createMainWindow() {
     const scaledY = windowY;
 
     if (
-      scaledX + (scaledWidth / 2) < display.bounds.x - 8 || // Left
-      scaledX + (scaledWidth / 2) > display.bounds.x + display.bounds.width || // Right
+      scaledX + scaledWidth / 2 < display.bounds.x - 8 || // Left
+      scaledX + scaledWidth / 2 > display.bounds.x + display.bounds.width || // Right
       scaledY < display.bounds.y - 8 || // Top
-      scaledY + (scaledHeight / 2) > display.bounds.y + display.bounds.height // Bottom
+      scaledY + scaledHeight / 2 > display.bounds.y + display.bounds.height // Bottom
     ) {
       // Window is offscreen
       if (is.dev()) {
@@ -439,6 +452,15 @@ async function createMainWindow() {
   const urlToLoad = config.get('options.resumeOnStart')
     ? config.get('url')
     : config.defaultConfig.url;
+  // Keep the application window alive when the user closes it on macOS. This
+  // matches the platform convention and, more importantly, preserves plugin
+  // and IPC state until the application actually quits.
+  win.on('close', (event) => {
+    if (is.macOS() && !isQuitting) {
+      event.preventDefault();
+      win.hide();
+    }
+  });
   win.on('closed', onClosed);
 
   win.on('move', () => {

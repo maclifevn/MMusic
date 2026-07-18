@@ -21,7 +21,9 @@ export type IStore = InstanceType<
 
 const migrations = {
   '>=3.12.0'(store: IStore) {
-    const blockerConfig = store.get('plugins.adblocker') as TrackerBlockerConfig;
+    const blockerConfig = store.get(
+      'plugins.adblocker',
+    ) as TrackerBlockerConfig;
     if (blockerConfig) {
       if (!Object.values(blockers).includes(blockerConfig.blocker)) {
         blockerConfig.blocker = blockers.InPlayer;

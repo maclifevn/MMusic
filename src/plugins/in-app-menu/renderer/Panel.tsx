@@ -88,8 +88,9 @@ export type PanelProps = JSX.HTMLAttributes<HTMLUListElement> & {
   offset?: OffsetOptions;
 };
 export const Panel = (props: PanelProps) => {
+  const mergedProps = mergeProps({ placement: 'bottom' }, props);
   const [elements, local, leftProps] = splitProps(
-    mergeProps({ placement: 'bottom' }, props),
+    mergedProps,
     ['anchor', 'children'],
     ['open', 'placement', 'offset'],
   );
@@ -98,25 +99,29 @@ export const Panel = (props: PanelProps) => {
 
   const position = useFloating(() => elements.anchor, panel, {
     whileElementsMounted: autoUpdate,
-    placement: local.placement as Placement,
+    get placement() {
+      return local.placement as Placement;
+    },
     strategy: 'fixed',
-    middleware: [
-      offset(local.offset),
-      size({
-        padding: 8,
-        apply({ elements, availableWidth, availableHeight }) {
-          elements.floating.style.setProperty(
-            '--max-width',
-            `${Math.max(200, availableWidth)}px`,
-          );
-          elements.floating.style.setProperty(
-            '--max-height',
-            `${Math.max(200, availableHeight)}px`,
-          );
-        },
-      }),
-      flip({ fallbackStrategy: 'initialPlacement' }),
-    ],
+    get middleware() {
+      return [
+        offset(local.offset),
+        size({
+          padding: 8,
+          apply({ elements, availableWidth, availableHeight }) {
+            elements.floating.style.setProperty(
+              '--max-width',
+              `${Math.max(200, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              '--max-height',
+              `${Math.max(200, availableHeight)}px`,
+            );
+          },
+        }),
+        flip({ fallbackStrategy: 'initialPlacement' }),
+      ];
+    },
   });
 
   const originX = () => {

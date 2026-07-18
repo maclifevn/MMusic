@@ -11,7 +11,9 @@ import { LyricsRenderer, setIsVisible } from './renderer';
 // Heavy transliteration deps: loaded on first use (when the user views romanized
 // lyrics in the matching language) so their dictionaries/models are not built at
 // renderer startup. Each is memoized after the first import.
-const romanizeThaiLib = lazyVar.lazy(async () => import('@dehoist/romanize-thai'));
+const romanizeThaiLib = lazyVar.lazy(
+  async () => import('@dehoist/romanize-thai'),
+);
 const sanscriptLib = lazyVar.lazy(
   async () => import('@indic-transliteration/sanscript'),
 );

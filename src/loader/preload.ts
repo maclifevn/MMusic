@@ -82,21 +82,22 @@ export const forceLoadPreloadPlugin = async (id: string) => {
 
 export const loadAllPreloadPlugins = async () => {
   const pluginConfigs = config.plugins.getPlugins();
+  const queue: Promise<void>[] = [];
 
   for (const [pluginId, pluginDef] of Object.entries(await preloadPlugins())) {
     const config = deepmerge(
-      pluginDef.config ?? { enable: false },
+      pluginDef.config ?? { enabled: false },
       pluginConfigs[pluginId] ?? {},
     );
 
     if (config.enabled) {
-      forceLoadPreloadPlugin(pluginId);
-    } else {
-      if (loadedPluginMap[pluginId]) {
-        forceUnloadPreloadPlugin(pluginId);
-      }
+      queue.push(forceLoadPreloadPlugin(pluginId));
+    } else if (loadedPluginMap[pluginId]) {
+      queue.push(forceUnloadPreloadPlugin(pluginId));
     }
   }
+
+  await Promise.allSettled(queue);
 };
 
 export const unloadAllPreloadPlugins = async () => {

@@ -40,3 +40,44 @@ test('MMusic App - With default settings, app is launched and visible', async ()
 
   await app.close();
 });
+
+test('MMusic App - Closing and reactivating preserves the window on macOS', async () => {
+  test.skip(process.platform !== 'darwin');
+
+  const app = await electron.launch({
+    cwd: appPath,
+    args: [
+      appPath,
+      '--no-sandbox',
+      '--disable-gpu',
+      '--whitelisted-ips=',
+      '--disable-dev-shm-usage',
+    ],
+  });
+
+  await app.firstWindow();
+  await app.evaluate(({ BrowserWindow }) =>
+    BrowserWindow.getAllWindows()[0].close(),
+  );
+
+  expect(
+    await app.evaluate(
+      ({ BrowserWindow }) => BrowserWindow.getAllWindows().length,
+    ),
+  ).toBe(1);
+  expect(
+    await app.evaluate(({ BrowserWindow }) =>
+      BrowserWindow.getAllWindows()[0].isVisible(),
+    ),
+  ).toBe(false);
+
+  await app.evaluate(({ app }) => app.emit('activate'));
+
+  expect(
+    await app.evaluate(({ BrowserWindow }) =>
+      BrowserWindow.getAllWindows()[0].isVisible(),
+    ),
+  ).toBe(true);
+
+  await app.close();
+});

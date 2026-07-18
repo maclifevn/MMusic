@@ -281,7 +281,7 @@ export const TitleBar = (props: TitleBarProps) => {
       setIgnoreTransition(false);
     });
     props.ipc.on('toggle-in-app-menu', () => {
-      setCollapsed(!collapsed());
+      setCollapsed((collapsed) => !collapsed);
     });
 
     props.ipc.on('window-maximize', refetchMaximize);
@@ -384,7 +384,7 @@ export const TitleBar = (props: TitleBarProps) => {
 
           (element as HTMLElement).style.setProperty(
             'transition-delay',
-            `${(length * 0.025) - (index * 0.025)}s`,
+            `${length * 0.025 - index * 0.025}s`,
           );
         }}
       >

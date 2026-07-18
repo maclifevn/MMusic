@@ -1,3 +1,5 @@
+import { untrack } from 'solid-js';
+
 import { ElementFromHtml } from '@/plugins/utils/renderer';
 
 import itemHTML from './templates/item.html?raw';
@@ -30,7 +32,8 @@ export const Popup = (props: PopupProps) => {
   const container = popup.querySelector<HTMLElement>(
     '.music-together-popup-container',
   )!;
-  const items = props.data
+  const data = untrack(() => props.data);
+  const items = data
     .map((props) => {
       if (props.type === 'item')
         return {
@@ -125,15 +128,16 @@ export const ItemRenderer = (props: ItemRendererProps) => {
   const element = ElementFromHtml(itemHTML);
   const iconContainer = element.querySelector<HTMLElement>('div.icon')!;
   const textContainer = element.querySelector<HTMLElement>('div.text')!;
-  if (props.icon) iconContainer.appendChild(props.icon);
-  textContainer.append(props.text);
+  const { icon, text, onClick, id } = untrack(() => ({ ...props }));
+  if (icon) iconContainer.appendChild(icon);
+  textContainer.append(text);
 
-  if (props.onClick) {
+  if (onClick) {
     element.addEventListener('click', () => {
-      props.onClick?.();
+      onClick();
     });
   }
-  if (props.id) element.id = props.id;
+  if (id) element.id = id;
 
   return {
     element,
@@ -143,6 +147,6 @@ export const ItemRenderer = (props: ItemRendererProps) => {
     setText(text: string) {
       textContainer.replaceChildren(text);
     },
-    id: props.id,
+    id,
   };
 };

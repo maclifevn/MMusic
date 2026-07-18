@@ -88,22 +88,22 @@ const [path, script] = ipcRenderer.sendSync('get-renderer-script') as [
   string | null,
   string,
 ];
-let blocked = true;
-if (path) {
-  webFrame.executeJavaScriptInIsolatedWorld(
-    0,
-    [
-      {
-        code: script,
-        url: path,
-      },
-    ],
-    true,
-    () => (blocked = false),
-  );
-} else {
-  webFrame.executeJavaScript(script, true, () => (blocked = false));
-}
+const rendererExecution = path
+  ? webFrame.executeJavaScriptInIsolatedWorld(
+      0,
+      [
+        {
+          code: script,
+          url: path,
+        },
+      ],
+      true,
+    )
+  : webFrame.executeJavaScript(script, true);
 
-// HACK: Wait for the script to be executed
-while (blocked);
+// Do not spin-wait here: promise callbacks cannot make progress while the
+// preload event loop is blocked. The injected renderer already waits for the
+// DOM/API readiness events it needs.
+rendererExecution.catch((error: unknown) => {
+  console.error('Failed to inject the renderer script', error);
+});

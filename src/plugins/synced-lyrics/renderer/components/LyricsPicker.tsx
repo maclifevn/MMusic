@@ -42,9 +42,10 @@ const LocalStorageSchema = z.object({
   provider: ProviderNameSchema,
 });
 
-export const providerIdx = runWithOwner(reactiveOwner, () =>
-  createMemo(() => providerNames.indexOf(lyricsStore.provider)),
-)!;
+export const providerIdx = runWithOwner(reactiveOwner, () => {
+  const memo = createMemo(() => providerNames.indexOf(lyricsStore.provider));
+  return memo;
+})!;
 
 const shouldSwitchProvider = (providerData: ProviderState) => {
   if (providerData.state === 'error') return true;

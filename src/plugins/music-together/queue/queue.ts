@@ -467,16 +467,19 @@ export class Queue {
         if (event.type === 'ADD_AUTOMIX_ITEMS') return;
       }
 
-      const fakeContext = {
-        ...this.queue,
-        queue: {
-          ...this.queue.queue,
-          store: {
-            ...this.queue.queue.store,
-            dispatch: this.originalDispatch,
+      const fakeContext = Object.assign(
+        Object.create(Reflect.getPrototypeOf(this.queue)) as QueueElement,
+        this.queue,
+        {
+          queue: {
+            ...this.queue.queue,
+            store: {
+              ...this.queue.queue.store,
+              dispatch: this.originalDispatch,
+            },
           },
         },
-      };
+      );
       this.originalDispatch?.call(
         fakeContext,
         event as {
